@@ -1,0 +1,53 @@
+list(int(int, int)) l;
+
+function plus(int a, int b) {
+	return a + b;
+};
+
+
+function minus(int a, int b) {
+	return a - b;
+};
+
+function mult(int a, int b) {
+	return a * b;
+};
+
+
+function printLn(list(char) str) {
+	for (char c in str) {
+		print(c);
+	};
+	print("\n");
+};
+
+l = [plus, minus, mult];
+
+list(list(char)) names;
+names = [['p', 'l', 'u', 's'], ['m', 'i', 'n', 'u', 's'], ['m', 'u', 'l', 't']];
+
+function testFun(int(int, int) f, list(char) name, int x, int y) {
+	print("Test fun with name: ");
+	printLn(name);
+	print(x);
+	print(" ");
+	print(y);
+	print(" res: ");
+	print(f(x, y));
+	print("\n");
+	return;
+};
+
+int counter;
+counter = 0;
+for (int(int, int) f in l) {
+	int counterInside;
+	counterInside = 0;
+	for (list(char) name in names) {
+		if (counter == counterInside) {
+			testFun(f, name, 10 + counter, 10 + counter);
+		};
+		counterInside++;
+	};
+	counter++;
+}

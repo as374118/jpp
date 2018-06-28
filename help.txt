@@ -1,0 +1,2 @@
+ENV = Ident -> Loc (Integer)
+STATE = (Loc Integer) -> Type

@@ -1,0 +1,56 @@
+// TEST FUNCTIONS
+
+// Simple functions tests
+
+function intPrinting(int a) {
+	print(a);
+	print("\n");
+};
+
+print("It should print 1000: ");
+intPrinting(1000);
+
+
+
+function increment(int a) {
+	return ++a;
+};
+print("It should print 1001: ");
+print(increment(1000));
+print("\n");
+
+// Complex functions tests
+int(int, char) repeat;
+repeat = function(int times, char c) {
+	while (times > 0) {
+		print(c);
+		times--;
+	};
+	return 0;
+};
+
+print("It should print: xxxxx: ");
+repeat(5, 'x');
+print("\n");
+
+// complex test with function objects (js -like)
+function mult(int x, int y) {
+	return x * y;
+};
+
+int(int, int) plus;
+plus = function(int x, int y) {
+	return x + y;
+};
+
+function change(int(int, int) f, int z, int q) {
+	return f(z, q);
+};
+
+print("It should print 20: ");
+print(change(mult, 4, 5));
+print("\n");
+
+print("It should print 9: ");
+print(change(plus, 4, 5));
+print("\n");

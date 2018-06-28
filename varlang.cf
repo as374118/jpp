@@ -1,0 +1,114 @@
+--- VARLANG GRAMMAR ---
+
+entrypoints Program ;
+
+
+
+--- Main definitions ---
+Program.   Program  ::= [Stm] ;
+Arg.        Arg  ::= Type Ident ;
+Decl.       Decl ::= Type [Ident] ;
+StmDecl.    Stm  ::= Decl ;
+StmBlock.   Stm  ::= "{" [Stm] "}" ;
+
+separator   Arg  "," ;
+separator   Ident "," ;
+separator   Stm ";" ;
+
+--- Operators with side effects ---
+StmAss.     Stm   ::= Ident "=" Exp ;
+StmDictAss. Stm   ::= Ident "[" Exp "]" "=" Exp ;
+EIncrR.     Exp7  ::= Ident "++" ;
+EIncr.      Exp7  ::= "++" Ident ;
+EDecrR.     Exp7  ::= Ident "--" ;
+EDecr.      Exp7  ::= "--" Ident ;
+EIncrExp.   Exp7  ::= Ident "+=" Exp ;
+EDecrExp.   Exp7  ::= Ident "-=" Exp ;
+EDivExp.    Exp7  ::= Ident "/=" Exp ;
+EMulrExp.   Exp7  ::= Ident "*=" Exp ;
+EModrExp.   Exp7  ::= Ident "%=" Exp ;
+StmStepExp. Stm   ::= Exp;
+
+--- Constructions ---
+StmIf.      Stm     ::= "if" "(" Exp ")" Stm  ;
+StmIfElse.  Stm     ::= "if" "(" Exp ")" Stm "else" Stm  ;
+StmWhile.   Stm     ::= "while" "(" Exp ")" Stm ;
+StmFor.     Stm     ::= "for" "(" Decl "in" Exp ")" "{" [Stm] "}" ;
+StmFunDef.  Stm     ::= "function" Ident "(" [Arg] ")" "{" [Stm] "}" ;
+RetStm.     Stm     ::= "return" Exp ;
+RetVoidStm. Stm     ::= "return" ;     
+StmMatch.   Stm     ::= "match" "(" Exp ")" "{" [CaseStm] "}" ;
+CaseStm.    CaseStm ::= ":" Ident "(" Ident ")" "{" [Stm] "}" ;
+
+separator CaseStm "" ;
+
+
+
+--- Built-in functions ---
+StmPrint.   Stm  ::= "print" "(" Exp ")" ;
+StmPrintS.  Stm  ::= "print" "(" String ")" ;
+
+
+
+--- Types ---
+Int.        Type ::= "int" ;
+Bool.       Type ::= "bool" ;
+Char.       Type ::= "char" ;
+Void.       Type ::= "void" ;
+Fun.        Type ::= Type "(" [Type] ")" ;
+List.       Type ::= "list" "(" Type ")" ;
+Dict.       Type ::= "dict" "(" Type "," Type ")" ;
+Var.        Type ::= "var" "(" [VarD] ")" ;
+VarD.       VarD ::= Ident "=>" Type ;
+separator   Type  "," ;
+separator   VarD  "," ;
+
+
+
+--- Expressions ---
+EVariable.  Exp7 ::= Ident ;
+EInt.       Exp7 ::= Integer ;
+EChar.      Exp7 ::= Char;
+EValTrue.   Exp7 ::= "true" ;
+EValFalse.  Exp7 ::= "false" ;
+EList.      Exp7 ::= "[" [Exp] "]" ;
+EVar.       Exp7 ::= "var" "(" "@" Ident "," Exp ")" ;
+EFun.       Exp7 ::= "function" "(" [Arg] ")" "{" [Stm] "}" ;
+EFunCall.   Exp7 ::= Ident "(" [Exp] ")" ;
+EDict.      Exp7 ::= "{" [ EDictD ] "}" ;
+EDictD.     EDictD ::= Exp ":" Exp ;
+EDictGet.   Exp7 ::= Ident "[" Exp "]" ;
+EVarIs.		Exp7 ::= "is" "(" Exp "," "@" Ident ")" ;
+separator   EDictD  "," ;
+
+
+
+--- Operators without side effects ---
+ENeg.       Exp6 ::= "-"    Exp7;
+ENot.       Exp6 ::= "!"    Exp7;
+
+EMul.       Exp5 ::= Exp5   "*"    Exp6;
+EDiv.       Exp5 ::= Exp5   "/"    Exp6;
+EMod.       Exp5 ::= Exp5   "%"    Exp6;
+
+EAdd.       Exp4 ::= Exp4   "+"    Exp5;
+ESub.       Exp4 ::= Exp4   "-"    Exp5;
+
+ELTH.       Exp3 ::= Exp3   "<"    Exp4;
+ELE.        Exp3 ::= Exp3   "<="   Exp4;
+EGTH.       Exp3 ::= Exp3   ">"    Exp4;
+EGE.        Exp3 ::= Exp3   ">="   Exp4;
+EEQU.       Exp3 ::= Exp3   "=="   Exp4;
+ENE.        Exp3 ::= Exp3   "!="   Exp4;
+
+EAnd.       Exp2 ::= Exp3 "&&" Exp2 ;
+EOr.        Exp1 ::= Exp2 "||" Exp1 ;
+
+coercions   Exp 7 ;
+separator   Exp "," ;
+
+
+
+--- Comments ---
+comment     "//";
+comment     "/*" "*/";

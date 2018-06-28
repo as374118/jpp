@@ -1,0 +1,16 @@
+char c;
+c = 'a';
+
+print(c);
+
+if (c == 'a') {
+	print("\nOK");
+} else {
+	print("\nErr");
+};
+
+if (c != 'b') {
+	print("\nOK");
+} else {
+	print("\nErr");
+}

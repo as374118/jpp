@@ -1,0 +1,121 @@
+// TO TEST VARIANT
+// var(qwe => int, asd => char) testVar, ttt;
+
+// testVar = var(@qwe, 123);
+// ttt = var(@asd, 'x');
+
+// match (testVar) {
+// 	:asd(cos) {
+// 		print('a');
+// 		print(234);
+// 		print(cos);
+// 	}
+// 	:qwe(cos2) {
+// 		print('b');
+// 		print(cos2);
+// 	}
+// };
+
+// match (ttt) {
+// 	:asd(cos) {
+// 		print('a');
+// 		print(cos);
+// 	}
+// 	:qwe(cos2) {
+// 		print('b');
+// 		print(cos2);
+// 	}
+// };
+
+
+// TO TEST LISTS AND PRINTINTG
+// list(int) l;
+// l = [1,2,3,4,5,6,7,8,9];
+
+// for (int i in l) {
+// 	print(i);
+// };
+
+
+// TO TEST INT OPERATIONS
+// int x;
+// print(x);
+// x = 100;
+// print(x);
+// x += 12;
+// print(x);
+// x += 1;
+// print(x);
+// x -= 1;
+// print(x);
+// x *= 12;
+// print(x);
+// x++;
+// print(x);
+// x--;
+// print(x);
+
+// TO TEST DICTIONARY
+// dict(int, int) testDict;
+// testDict = {1 : 12, 2: 24, 3 : 48};
+// print(testDict[1]);
+// print(testDict[2]);
+// testDict[2] = 1;
+// print(testDict[1]);
+// print(testDict[2]);
+
+// TO TEST FUNCTIONS
+
+// TO TEST RECURSIVE FUNCTION
+// int x;
+// x = 100;
+
+// function testRec(int x) {
+// 	print('x');
+// 	if (x > 1) {
+// 		testRec(x - 1);
+// 	}
+// };
+
+// testRec(10000);
+
+// function printStr(list(char) str) {
+// 	for (char c in str) {
+// 		print(c);
+// 	}
+// };
+
+
+// function printStringLn(list(char) str) {
+// 	printStr(str);
+// 	print('\n');
+// };
+
+// printStringLn([]);
+// printStringLn(['a', 'b', 'c']);
+
+
+var(A => char, B => int) xVar;
+xVar = var(@A, 'x');
+
+print("qweq");
+
+print('\n');
+
+match (xVar) {
+	:A(cos) {
+		// print(cos);
+	}
+	:B(cos) {
+
+	}
+};
+
+
+
+
+
+
+
+
+

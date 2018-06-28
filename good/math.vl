@@ -1,0 +1,43 @@
+// Test math operations
+int a, b, c, d;
+
+a = 10;
+b = 20;
+c = 300;
+d = 500;
+
+function testEqVal(int x, int target) {
+	if (x == target) {
+		print("It should print: ");
+		print(target);
+		print(" ");
+		print(x);
+		print("\n");
+	} else {
+		print("Error");
+	};
+};
+
+function testValComapre(int x, int compare) {
+	print (x);
+	if (x > compare) {
+		print(">");
+	} else {
+		if (x < compare) {
+			print("<");
+		} else {
+			print("=");
+		}
+	};
+	print(compare);
+	print("\n");
+};
+
+list(int) l;
+l = [a, b, c, d];
+
+for (int x in l) {
+	testEqVal(x, x);
+	testValComapre(x, c);
+};
+

@@ -1,0 +1,32 @@
+// If else tests
+print("It should print true: ");
+if (true) {
+	print("true");
+};
+
+print("\n");
+
+bool x;
+x = false;
+print("It should print x: ");
+if (!x) {
+	print("x")
+};
+
+print("\n");
+
+if (5 > 4) {
+	print("Ok\n");
+} else {
+	print("Error");
+};
+
+int x;
+x = 10;
+x++;
+
+if (x == 11) {
+	print("OK\n");
+} else {
+	print("Error");
+}

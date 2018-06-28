@@ -1,0 +1,20 @@
+list(char) a;
+a = ['V', 'a', 'r', 'l', 'a', 'n', 'g'];
+list(char) b;
+b = ['i', 's'];
+dict(list(char), list(char)) d;
+d = {
+	a : ['c', 'o', 'o', 'l']
+};
+
+function printL(list(char) l) {
+	for (char c in l) {
+		print(c);
+	};
+};
+
+printL(a);
+print(' ');
+printL(b);
+print(' ');
+printL(d[a]);

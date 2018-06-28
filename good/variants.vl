@@ -1,0 +1,45 @@
+// VARS TO TEST
+var(a => int, b => dict(int, int)) testVar1, testVar2;
+
+testVar1 = var(@a, 123);
+testVar2 = var(@b, {100 : 100});
+
+
+// TEST MATCH
+
+function testVariant(var(a => int, b => dict(int, int)) testVar) {
+	match (testVar) {
+		:a(smth) {
+			print(smth + 100);
+		}
+		:b(smth) {
+			print(smth[100]);
+		}
+	}
+};
+
+print("It should print 100: ");
+testVariant(testVar2); // wypisze 100
+print('\n');
+print("It should print 223: ");
+testVariant(testVar1); // wypisze 223
+print('\n');
+
+// TEST IS STATEMENT
+
+function testVariantIs(var(a => int, b => dict(int, int)) testVar) {
+	if (is(testVar, @a)) {
+		print("Yes it's a\n")
+	} else {
+		print("No, it's not a\n");
+	};
+	if (is(testVar, @b)) {
+		print("cause it's b\n");
+	};
+};
+
+print("Test a\n");
+testVariantIs(testVar1);
+
+print("Test b\n");
+testVariantIs(testVar2);

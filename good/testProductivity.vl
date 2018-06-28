@@ -1,0 +1,10 @@
+// najlepiej odpalić z czasem
+
+function recF(int counter) {
+	if (counter > 0) {
+		recF(--counter);
+	}
+};
+
+recF(1000000);
+print("OK");

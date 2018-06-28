@@ -1,0 +1,19 @@
+dict(int, list(int)) d;
+
+d[1] = [1,2,3];
+d[2] = [10,20,30];
+d[10] = [9,8,7];
+
+function testDictKey(dict(int, list(int)) dictTest, int key) {
+	print(key);
+	print(" ");
+	for (int x in dictTest[key]) {
+		print(x);
+		print(" ");
+	};
+	print("\n");
+};
+
+testDictKey(d, 1);
+testDictKey(d, 2);
+testDictKey(d, 10);
